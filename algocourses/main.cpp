@@ -45,7 +45,5 @@ const string ANS[] = {"NO", "YES"};
 
 signed main() {
     SCONF();  
-    string s;
-    cin >> s;
-    cout << s;
+    
 }
