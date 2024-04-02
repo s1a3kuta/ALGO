@@ -1,4 +1,5 @@
-#ifdef MILFS#define _GLIBCXX_DEBUG
+#ifdef MILFS
+#define _GLIBCXX_DEBUG
 #define _GLIBCXX_DEBUG_PEDANTIC
 #endif
 
@@ -15,17 +16,17 @@
 #define sz(x) (int)x.size()
 #define nl '\n'
 
-#define int long long
+// #define int long long
 using namespace std;
 
 void SCONF() {
-#ifdef MILFS
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#else
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-#endif
+    #ifdef MILFS
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #else
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+    #endif
 }
 
 using ll = long long;
