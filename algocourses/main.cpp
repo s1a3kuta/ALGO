@@ -43,8 +43,40 @@ const int LOG = 21;
 const int MOD = INF + 7;
 const string ANS[] = {"NO", "YES"};
 
+vvi dp(1 << 17, vi(17, INF)), p(1 << 17, vi(17, -1));
+vvi g(17, vi(17));
 
 signed main() {
     SCONF();  
-    
+    int n;
+    cin >> n;
+    if (n == 1) {
+        cout << "0\n1"; 
+        return 1488;
+    }
+    fr(i, 0, n) {
+        fr(j, 0, n) {
+            cin >> g[i][j];
+        }
+    }
+    fr(i, 0, n) dp[1 << i][i] = 0;
+    fr(mask, 1, 1 << n) {
+        if (1 & mask == 0) {
+            cout << mask << nl;
+            continue;
+        }
+        fr(i, 0, n) {
+            if (dp[mask][i] != INF) {
+                fr(u, 0, n) {
+                    if (g[i][u] > 0 && !(mask & (1 << u)) && 
+                    dp[mask | (1 << u)][u] > dp[mask][i] + g[i][u])
+                     dp[mask | (1 << u)][u] = dp[mask][i] + g[i][u];
+                     p[mask | (1 << u)][u] = i;
+                }
+            }
+        }
+    }
+    fr(i, 0, n) {
+        cout << dp[(1 << n) - 1][i] << " \n"[i == n - 1];
+    }
 }
